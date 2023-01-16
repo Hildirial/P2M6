@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [labeled]
 env:
-  GITHUB_TOKEN: ${{ secrets.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 }}
+  MY_GITHUB_TOKEN: ${{ secrets.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 }}
 
 jobs:
   assign_one_project:

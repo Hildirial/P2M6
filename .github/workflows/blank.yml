@@ -6,7 +6,7 @@ on:
 jobs:
   Move_Labeled_Issue_On_Project_Board:
     runs-on: ubuntu-latest
-    steps:
+    runs:
         action-token: "${{ secrets.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 }}"
         project-url: "https://github.com/users/Hildirial/projects/2"
         column-name: "Todo"

@@ -1,16 +1,2 @@
-name: Add bugs to bugs project
-on:
-  issues:
-    types:
-      - opened
-jobs:
-  add-to-project:
-    name: Add issue to project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/add-to-project@RELEASE_VERSION
-        with:
-          project-url: https://github.com/orgs/Hildirial/projects/2
-          github-token: ${{ secrets.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 }}
-          labeled: bug, needs-triage
-          label-operator: OR
+- name: Move labeled or milestoned issue to a specific project column
+  uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0

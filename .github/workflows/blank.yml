@@ -10,7 +10,7 @@ jobs:
     - uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
       with:
         action-token: "${{ secrets.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 }}"
-        project-url: "https://github.com/Hildiriail/projects/2"
+        project-url: "https://github.com/Hildirial/projects/2"
         column-name: "Todo"
         label-name: "Bug"
         columns-to-ignore: "In Review,Ready to deploy,Done"

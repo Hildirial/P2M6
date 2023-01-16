@@ -1,14 +1,23 @@
+name: Auto Assign to Project(s)
+
 on:
   issues:
     types: [labeled]
+  pull_request:
+    types: [labeled]
+env:
+  MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
 jobs:
-  Move_Labeled_Issue_On_Project_Board:
+  assign_one_project:
     runs-on: ubuntu-latest
+    name: Assign to One Project
     steps:
-    - uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
+    - name: Assign issues and pull requests with `bug` label to project 2
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'bug') ||
+        contains(github.event.pull_request.labels.*.name, 'bug')
       with:
-        MY_GITHUB_TOKEN: "${{ secrets.MY_GITHUB_TOKEN }}"
-        project-url: "https://github.com/Hildirial/projects/2"
-        column-name: "Todo"
-        label-name: "bug"
-        columns-to-ignore: "In Review,Ready to deploy,Done"
+        project: 'https://github.com/users/Hildirial/projects/2'
+        column_name: 'Todo'

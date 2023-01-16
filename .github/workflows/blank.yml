@@ -28,4 +28,4 @@ jobs:
         contains(github.event.pull_request.labels.*.name, 'bug')
       with:
         project: 'https://github.com/users/Hildirial/projects/2'
-        column_name: 'Labeled'
+        column_name: "Todo"

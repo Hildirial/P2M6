@@ -6,8 +6,9 @@ on:
 jobs:
   Move_Labeled_Issue_On_Project_Board:
     runs-on: ubuntu-latest
+    executor: node/default
     steps:
-    - uses:  konradpabjan/move-labeled-or-milestoned-issue@v1.0
+    - uses:  konradpabjan/move-labeled-or-milestoned-issue@v2.0
       with:
         action-token: "${{ secrets.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 }}"
         project-url: "https://github.com/users/Hildirial/projects/2"

@@ -1,12 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Add bugs to bugs project
-
 on:
   issues:
     types:
       - opened
-
 jobs:
   add-to-project:
     name: Add issue to project
@@ -14,8 +10,6 @@ jobs:
     steps:
       - uses: actions/add-to-project@RELEASE_VERSION
         with:
-          # You can target a repository in a different organization
-          # to the issue
           project-url: https://github.com/orgs/Hildirial/projects/2
           github-token: ${{ secrets.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 }}
           labeled: bug, needs-triage

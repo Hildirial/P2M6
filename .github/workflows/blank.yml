@@ -20,3 +20,4 @@ jobs:
           github-token: ${{ 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 }}
           labeled: bug, needs-triage
           label-operator: OR
+          run mpn ci

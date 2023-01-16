@@ -13,4 +13,4 @@ jobs:
         project-url: "https://github.com/users/Hildirial/projects/2"
         column-name: "Todo"
         label-name: "Bug"
-        columns-to-ignore: "In Review,Ready to deploy,Done"
+        columns-to-ignore: "*"

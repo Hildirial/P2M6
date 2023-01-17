@@ -2,7 +2,7 @@ const { GitHub } = require("@actions/github");
 
 async function run() {
   try {
-    const context = GitHub.context;
+    const context = GitHub;
     if (context.payload.label.name !== "bug") {
       console.log("This issue doesn't have the correct label");
       return;

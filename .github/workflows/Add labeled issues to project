@@ -1,4 +1,4 @@
-name: Attribuer des issues à un projet
+name: Assign to project
 
 on:
   issues:
@@ -7,24 +7,9 @@ on:
 jobs:
   assign:
     runs-on: ubuntu-latest
-
+    name: Assign to project
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Attribuer au projet
-      id: assign
-      uses: actions/github-script@0.8.0
+    - name: Assign to project
+      uses: ./.github/actions/assign-to-project
       with:
-        script: |
-          const context = require("@actions/github").context;
-          const octokit = new require("@actions/github").GitHub(process.env.GITHUB_TOKEN);
-          if (context.payload.label.name === "bug") {
-            octokit.projects.createCard({
-              column_id: 1,
-              content_id: context.payload.issue.id,
-              content_type: "Issue"
-            });
-          }
-      env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}

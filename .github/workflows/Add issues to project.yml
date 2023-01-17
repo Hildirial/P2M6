@@ -17,7 +17,7 @@ jobs:
       uses: actions/github-script@0.8.0
       with:
         script: |
-          const context = require("@actions/github").context;
+          const context = require("@actions/github");
           const octokit = new require("@actions/github").GitHub(process.env.GITHUB_TOKEN);
           if (context.payload.label.name === "bug") {
             octokit.projects.createCard({

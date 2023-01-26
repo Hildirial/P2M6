@@ -3,7 +3,7 @@ name: Creat Issues
 on:
   push:
     paths:
-      - "issues.yml"
+      - ".github/issues.yml"
 
 jobs:
   create-issues:

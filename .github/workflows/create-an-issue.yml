@@ -1,0 +1,21 @@
+name: Creat Issues
+
+on:
+  push:
+    paths:
+      - "issues.yml"
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Chackout code
+      uses: actions/checkout@v2
+    - name: Create Issues
+      id: create_issues
+      uses: action/create-an-issue-or-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        issue-body: |
+          ${{ from_yaml(file('issues.yml'))}}

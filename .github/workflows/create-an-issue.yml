@@ -1,4 +1,4 @@
-name: Creat Issues
+name: Create Issues
 
 on:
   push:
@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Chackout code
+    - name: Checkout code
       uses: actions/checkout@v2
     - name: Create Issues
       id: create_issues
       uses: action/create-an-issue-or-pull-request@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ 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 }}
         issue-body: |
           ${{ from_yaml(file('issues.yml'))}}

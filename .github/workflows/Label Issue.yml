@@ -8,7 +8,7 @@ jobs:
   label-issue:
     runs-on: ubuntu-latest
     steps:
-    - name: check label
+    - name: Check label
       if: github.event.action == 'labeled' && github.event.label.name == 'bug'
     - name: Move Issue
       uses: peter-evans/move-project-card@v2

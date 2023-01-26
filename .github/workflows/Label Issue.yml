@@ -1,0 +1,17 @@
+name: Label Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  label-issue:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check label
+      if: github.event.action == 'labeled' && github.event.label.name == 'bug'
+    - name: Move Issue
+      uses: peter-evans/move-project-card@v2
+      with:
+        column_name: "To Do"
+        project_name: "Bugs"

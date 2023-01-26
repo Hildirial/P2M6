@@ -1,5 +1,6 @@
 name: Create Issues
-
+env: 
+  GITHUB_TOKEN: ${{ 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 }}
 on:
   push:
     paths:

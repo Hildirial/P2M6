@@ -1,14 +1,25 @@
-const axios = require('axios');
+const axios = require("axios");
 
-async function addIssueToColumn(columnName) {
+async function addIssueToColumn(octokit, columnName, issueNumber) {
+  // Get the repository name and owner from context
+  const { repository } = context.payload;
+  const owner = repository.owner.login;
+  const repo = repository.name;
+
   // Get the project ID
-  const project = await axios.get(`https://api.github.com/repos/${OWNER}/${REPO}/projects`);
-  const projectId = project.data[0].id;
+  const projects = await octokit.projects.listForRepo({ owner, repo });
+  const projectId = projects.data[0].id;
 
   // Get the column ID by column name
-  const column = await axios.get(`https://api.github.com/projects/${projectId}/columns?per_page=100`);
-  const columnId = column.data.find(c => c.name === columnName).id;
+  const columns = await octokit.projects.listColumns({ project_id: projectId });
+  const columnId = columns.data.find((c) => c.name === columnName).id;
 
   // Add the issue to the column
-  await axios.post(`https://api.github.com/projects/columns/${columnId}/cards`, {
-    content_id: ISSUE
+  await octokit.projects.createCard({
+    column_id: columnId,
+    content_id: issueNumber,
+    content_type: "Issue",
+  });
+}
+
+module.exports = addIssueToColumn;

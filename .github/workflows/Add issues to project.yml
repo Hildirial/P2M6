@@ -28,7 +28,8 @@ jobs:
       uses: actions/github-script@v3
       with:
         script: |
-          const octokit = new GitHub(process.env.GITHUB_TOKEN);
+          const { Octokit } = require('@octokit/rest');
+          const octokit = new Octokit(process.env.GITHUB_TOKEN);
           if (context.payload.label.name === "bug") {
             const columnName = 'Todo';
             require('./add-issue-to-column')(columnName, context.payload.issue.number, process.env.GITHUB_TOKEN);

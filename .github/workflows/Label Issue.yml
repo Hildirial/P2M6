@@ -1,5 +1,4 @@
 name: Label Issue
-
 on:
   issues:
     types: [labeled]
@@ -10,6 +9,7 @@ jobs:
     steps:
     - name: Check label
       if: github.event.action == 'labeled' && github.event.label.name == 'bug'
+      run: echo "The label is 'bug'"
     - name: Move Issue
       uses: peter-evans/move-project-card@v2
       with:

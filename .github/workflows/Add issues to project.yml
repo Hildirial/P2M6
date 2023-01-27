@@ -14,22 +14,17 @@ jobs:
       with:
         node-version: '16.x'
 
-    - name: Install octokit
-      run: npm install @octokit/rest
-      
     - name: Install dependencies
-      run: npm install
+      run: npm install @actions/toolkit
 
     - name: Assign to project
       id: assign
-      uses: actions/github-script@v3
-      with:
-        script: |
-          const { Octokit } = require('@octokit/rest');
-          const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-          if (context.payload.label.name === "bug") {
+      run: |
+          const { Toolkit } = require('@actions/toolkit');
+          const toolkit = new Toolkit();
+          if (toolkit.context.payload.label.name === "bug") {
             const columnName = 'Todo';
-            require('./add-issue-to-column')(columnName, context.payload.issue.number, octokit);
+            require('./add-issue-to-column')(columnName, toolkit.context.payload.issue.number, toolkit);
           }
       env:
         GITHUB_TOKEN: ${{ secrets.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 }}

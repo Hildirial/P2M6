@@ -32,4 +32,4 @@ jobs:
             require('./add-issue-to-column')(columnName, context.payload.issue.number, octokit);
           }
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.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 }}

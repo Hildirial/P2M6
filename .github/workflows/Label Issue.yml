@@ -1,4 +1,5 @@
-name: Label Issue
+nname: Label Issue
+
 on:
   issues:
     types: [labeled]
@@ -7,11 +8,8 @@ jobs:
   label-issue:
     runs-on: ubuntu-latest
     steps:
-    - name: Check label
+    - name: check label
       if: github.event.action == 'labeled' && github.event.label.name == 'bug'
-      run: echo "The label is 'bug'"
-    - name: Move Issue
-      uses: peter-evans/move-project-card@v2
-      with:
-        column_name: "To Do"
-        project_name: "Bugs"
+    - name: Run label_issue.py
+      run: |
+        python label_issue.py

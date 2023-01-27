@@ -1,4 +1,5 @@
 name: Label Issue
+run: python label_issue.py
 
 on:
   issues:

@@ -14,9 +14,6 @@ jobs:
       with:
         node-version: '16.x'
 
-    - name: Run npm init
-      run: npm init --yes
-
     - name: Install octokit
       run: npm install @octokit/rest
       
@@ -29,10 +26,10 @@ jobs:
       with:
         script: |
           const { Octokit } = require('@octokit/rest');
-          const octokit = new Octokit(process.env.GITHUB_TOKEN);
+          const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
           if (context.payload.label.name === "bug") {
             const columnName = 'Todo';
-            require('./add-issue-to-column')(columnName, context.payload.issue.number, process.env.GITHUB_TOKEN);
+            require('./add-issue-to-column')(columnName, context.payload.issue.number, octokit);
           }
       env:
         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}

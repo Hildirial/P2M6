@@ -14,6 +14,9 @@ jobs:
       with:
         node-version: '16.x'
 
+    - name: Run npm init
+      run: npm init --yes
+
     - name: Install dependencies
       run: npm install
 

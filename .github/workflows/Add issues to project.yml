@@ -18,17 +18,18 @@ jobs:
       run: npm init --yes
 
     - name: Install dependencies
-      run: npm install
+      run: npm install @octokit/rest
 
     - name: Assign to project
       id: assign
       uses: actions/github-script@v3
       with:
         script: |
-          const octokit = new GitHub(process.env.GITHUB_TOKEN);
+          const { Octokit } = require("@octokit/rest");
+          const octokit = new Octokit({ auth: process.env.MY_GITHUB_TOKEN });
           if (context.payload.label.name === "bug") {
             const columnName = 'Todo';
-            require('./add-issue-to-column')(columnName, context.payload.issue.number, process.env.GITHUB_TOKEN);
+            require('./add-issue-to-column')(columnName, context.payload.issue.number, octokit);
           }
       env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}

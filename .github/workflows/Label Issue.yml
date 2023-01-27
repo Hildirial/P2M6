@@ -1,6 +1,4 @@
 name: Label Issue
-run: python label_issue.py
-
 on:
   issues:
     types: [labeled]
@@ -11,15 +9,6 @@ jobs:
     steps:
     - name: check label
       if: github.event.action == 'labeled' && github.event.label.name == 'bug'
-    - name: Setup Python
-      uses: actions/setup-python@v2
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Run label_issue.py
+    - name: Move Issue
       run: |
-        python label_issue.py
+        npx @peter-evans/move-project-card --column-name "To Do" --project-name "Bugs"

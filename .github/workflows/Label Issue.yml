@@ -10,6 +10,15 @@ jobs:
     steps:
     - name: check label
       if: github.event.action == 'labeled' && github.event.label.name == 'bug'
+    - name: Setup Python
+      uses: actions/setup-python@v2
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Run label_issue.py
       run: |
         python label_issue.py

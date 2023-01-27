@@ -1,5 +1,4 @@
 name: Assign issues to project
-npm install @octokit/rest
 
 on:
   issues:

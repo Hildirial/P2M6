@@ -21,11 +21,10 @@ jobs:
       with:
         script: |
           const { context, GitHub } = require("@actions/github");
-          const { context } = GitHub;
           const octokit = new GitHub(process.env.GITHUB_TOKEN);
           if (context.payload.label.name === "bug") {
             const columnName = 'Todo';
-            require('./add-issue-to-column')(columnName, context.payload.issue.id, process.env.GITHUB_TOKEN);
+            require('./add-issue-to-column')(columnName, context.payload.issue.number, process.env.GITHUB_TOKEN);
           }
       env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}

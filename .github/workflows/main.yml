@@ -15,7 +15,7 @@ jobs:
         echo "Issue labeled as bug. Creating Bugs issue..."
 
     - name: Create Bugs Issue
-      uses: actions/create-an-issue@v2
+      uses: actions/create-an-issue@v1.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         title: "Bug: ${{ github.event.issue.title }}"

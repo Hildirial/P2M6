@@ -1,0 +1,9 @@
+name: "Create Bugs Issue"
+description: "This action creates a new issue for bugs in the repository."
+inputs:
+  repo-token:
+    description: "The GitHub repository token."
+    required: true
+runs:
+  using: "node12"
+  main: "create-bugs-issue.js"

@@ -15,14 +15,6 @@ jobs:
         echo "Issue labeled as bug. Creating Bugs issue..."
 
     - name: Create Bugs Issue
-      uses: PAblor33/actions-rest-api@v1.1
+      uses: ./.github/actions/create-bugs-issue
       with:
-        args: |
-          POST /repos/Hildirial/P2M6/issues
-          {
-            "title": "Bug: ${{ github.event.issue.title }}",
-            "body": "Issue #${GITHUB_EVENT_NUMBER} has been labeled as a bug. Please add to Bugs.",
-            "labels": ["Bugs"]
-          }
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       repo-token: ${{ secrets.GITHUB_TOKEN }}

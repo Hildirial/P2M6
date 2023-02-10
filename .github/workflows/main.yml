@@ -1,0 +1,23 @@
+name: Create Backlog Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-backlog-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check if labeled "bug"
+      if: github.event.label.name == 'bug'
+      run: |
+        echo "Issue labeled as bug. Creating Backlog issue..."
+
+    - name: Create Backlog Issue
+      uses: actions/create-an-issue@v2
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        title: "Bug: ${{ github.event.issue.title }}"
+        body: "Issue #${GITHUB_EVENT_NUMBER} has been labeled as a bug. Please add to Backlog."
+        labels: "Backlog"

@@ -10,23 +10,30 @@ jobs:
 
     steps:
     - name: Checkout code 
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
+      with:
+        ref: master
 
     - name: Set Node.js 12.x
       uses: actions/setup-node@v3
       with:
           node-version: 12.x
           cache: npm
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install actions/core
       run: npm install @actions/core
+      
     - name: Install actions/github
       run: npm install @actions/github
+
     - name: Check if labeled "bug"
       if: github.event.label.name == 'bug'
       run: |
         echo "Issue labeled as bug. Creating Bugs issue..."
+
     - name: Checkout repository
       uses: actions/checkout@v2
 

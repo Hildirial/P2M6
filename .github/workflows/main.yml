@@ -13,6 +13,8 @@ jobs:
       if: github.event.label.name == 'bug'
       run: |
         echo "Issue labeled as bug. Creating Bugs issue..."
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Create Bugs Issue
       uses: ./.github/actions/create-bugs-issue

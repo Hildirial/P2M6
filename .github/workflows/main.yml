@@ -16,7 +16,7 @@ jobs:
       run: npm ci
       
     - name: Generate package-lock.json
-      run: npm install
+      run: npm shrinkwrap
       
     - name: Set Node.js 16.x
       uses: actions/setup-node@v2

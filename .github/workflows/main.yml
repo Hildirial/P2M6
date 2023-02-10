@@ -15,11 +15,11 @@ jobs:
     - name: Initialize npm
       run: npm init -y
       
-    - name: Install dependencies
-      run: npm ci
-      
     - name: Generate package-lock.json
       run: npm shrinkwrap
+      
+    - name: Install dependencies
+      run: npm ci
       
     - name: Set Node.js 16.x
       uses: actions/setup-node@v2

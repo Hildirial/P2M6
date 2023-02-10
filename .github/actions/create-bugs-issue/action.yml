@@ -1,3 +1,4 @@
+npm install @actions/core @actions/github
 name: "Create Bugs Issue"
 description: "This action creates a new issue for bugs in the repository."
 inputs:

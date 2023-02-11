@@ -21,9 +21,6 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Install directory
-      run: npm install @actions/
-      
     - name: Set Node.js 16.x
       uses: actions/setup-node@v2
       with:

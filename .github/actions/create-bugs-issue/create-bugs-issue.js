@@ -3,9 +3,7 @@ const { Octokit } = require('@octokit/rest');
 
 async function run() {
   try {
-    const octokit = new Octokit({
-      auth: core.getInput('repo-token')
-    });
+   
     const label = github.context.payload.label.name;
     if (label !== 'bug') {
       core.debug(`Label is not "bug". No action taken.`);
@@ -13,6 +11,9 @@ async function run() {
     }
 
     const issueTitle = github.context.payload.issue.title;
+    const octokit = new Octokit({
+      auth: 'secrets.GITHUB_TOKEN'
+    })
 
     await octokit.issues.create({
       owner: github.context.repo.owner,

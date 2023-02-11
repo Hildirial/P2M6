@@ -5,5 +5,5 @@ inputs:
     description: "The GitHub repository token."
     required: true
 runs:
-  using: "node12"
+  using: "node16"
   main: "create-bugs-issue.js"

@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
-const repoToken = core.getInput('repo-token');
-
+const repoToken = process.env.GITHUB_TOKEN;
 
 console.log(`repo-owner: ${core.getInput('repo-owner')}`);
 console.log(`repo-name: ${core.getInput('repo-name')}`);

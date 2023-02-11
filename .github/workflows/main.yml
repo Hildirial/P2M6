@@ -48,7 +48,7 @@ jobs:
 
     - name: Create Bugs Issue
       uses: ./.github/actions/create-bugs-issue
-      with:
+      with: |
       repo-token: ${{ secrets.GITHUB_TOKEN }}
       label-name: ${{ github.event.label.name }}
       issue-title: ${{ github.event.issue.title }}

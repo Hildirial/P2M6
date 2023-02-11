@@ -32,10 +32,16 @@ jobs:
     - name: Install octokit/rest
       run: npm install @octokit/rest
 
+    - name: Set Variables
+      env:
+      label-name: ${{ github.event.label.name }}
+      issue-title: ${{ github.event.issue.title }}
+
     - name: Check if labeled "bug"
-      if: github.event.label.name == 'bug'
+      if: env.label-name == 'bug'
       run: |
         echo "Issue labeled as bug. Creating Bugs issue..."
+
 
     - name: Checkout repository
       uses: actions/checkout@v3

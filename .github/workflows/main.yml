@@ -29,8 +29,8 @@ jobs:
     - name: Install actions/core
       run: npm install @actions/core
       
-    - name: Install actions/github
-      run: npm install @actions/github
+    - name: Install octokit/rest
+      run: npm install @octokit/rest
 
     - name: Check if labeled "bug"
       if: github.event.label.name == 'bug'

@@ -1,9 +1,11 @@
 const core = require('@actions/core');
-const { GitHub } = require('@actions/github');
+const Octokit = require('@octokit/rest');
 
 async function run() {
   try {
-    const github = new GitHub(core.getInput('repo-token'));
+    const octokit = new Octokit({
+      auth: core.getInput('repo-token')
+    });
     const label = github.context.payload.label.name;
     if (label !== 'bug') {
       core.debug(`Label is not "bug". No action taken.`);

@@ -11,7 +11,7 @@ async function run() {
     }
 
     const issueTitle = github.context.payload.issue.title;
-    const octokit = new github.GitHub(core.getInput('repo-token'));
+    const octokit = new GitHub(core.getInput('repo-token'));
 
     await octokit.issues.create({
       owner: github.context.repo.owner,

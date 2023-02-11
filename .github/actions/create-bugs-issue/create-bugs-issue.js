@@ -1,6 +1,10 @@
 const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 
+console.log(`repo-owner: ${core.getInput('repo-owner')}`);
+console.log(`repo-name: ${core.getInput('repo-name')}`);
+console.log(`repo-token: ${core.getInput('repo-token')}`);
+
 async function run() {
   try {
     const label = core.getInput('label-name');

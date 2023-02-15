@@ -42,4 +42,6 @@ jobs:
     - name: Create Bugs Issue
       uses: ./.github/actions/create-bugs-issue
       with:
-       repo-token: ${{ secrets.GITHUB_TOKEN }}
+       repo-owner: ${{ github.repository_owner }}
+       repo-name: ${{ github.event.repository.name }}
+       repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
